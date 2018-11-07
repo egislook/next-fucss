@@ -2,7 +2,7 @@
 // This source was taken from the @zeit/next-mdx plugin source:
 // https://github.com/zeit/next-plugins/blob/master/packages/next-mdx
 const FucssPlugin = require('./fucss.plugin.js');
-const { cls }  = require('./fucss.utils.js');
+const { cls }  = require('./utils.js');
 
 // module.exports = (mainConfig) => 
 //   withCSS({
