@@ -3,6 +3,7 @@
 // https://github.com/zeit/next-plugins/blob/master/packages/next-mdx
 
 const FucssPlugin = require('./fucss.plugin.js');
+const { generator }  = require('./fucss.utils.js');
 
 // module.exports = (mainConfig) => 
 //   withCSS({
@@ -31,5 +32,4 @@ const loader = module.exports.loader = {
 
 module.exports.plugin = FucssPlugin;
 
-module.exports.fucss = (obj) => 
-  Object.entries(obj).reduce((str, [ key, show ]) => show ? str + ' ' + key : str , '');
+module.exports.fucss = module.exports.cls = module.exports.classer = generator;
