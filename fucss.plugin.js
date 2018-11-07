@@ -1,6 +1,8 @@
 const fucss = require('fucss');
 const fs    = require('fs');
 
+const styleFile = process.cwd() + '/static/style.css';
+
 module.exports = class FucssPlugin {
   
   constructor(options) {
@@ -9,6 +11,11 @@ module.exports = class FucssPlugin {
   }
   
   apply(compiler) {
+    
+    compiler.hooks.beforeCompile.tapPromise('FucssPlugin', async (compilation) => {
+      !fs.existsSync(styleFile) && fs.writeFileSync(styleFile, '', { flag: 'w+' } );
+      return;
+    })
     
     compiler.hooks.emit.tapPromise('FucssPlugin', async (compilation, cb) => {
       
@@ -25,10 +32,10 @@ module.exports = class FucssPlugin {
         
         const processingFile = files[files.length - 1];
         
-        if(~processingFile.indexOf('.css') || !fucss.store.classes.length) 
+        if(~processingFile.indexOf('.css') || !fucss.store.classes.length)
           return;
         
-        const style = fucss.generateStyling({ classes: fucss.store.classes, returnStyle: true, glob: true, anim: true });
+        const style = fucss.generateStyling({ classes: fucss.store.classes, returnStyle: true, glob: true, anim: true, escape: true });
         
         // const str = `
         //   prevLength: ${this.prevClasses.length} 
@@ -44,7 +51,7 @@ module.exports = class FucssPlugin {
         
         // let i = 100; while(i < 0){ console.log(process.cwd()); i--; };
         
-        fs.writeFileSync(process.cwd() + '/static/style.css',  style);
+        fs.writeFileSync(styleFile, style + ' /** Incorrect classes ' + fucss.incorrect.join(' ') + ' */', { flag: 'w+' } );
         this.prevClasses = fucss.store.classes;
         return;
         
