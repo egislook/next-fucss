@@ -1,3 +1,6 @@
+if(typeof window !== 'object')
+  return;
+
 const fucss = require('fucss');
 const fs    = require('fs');
 
