@@ -30,3 +30,6 @@ const loader = module.exports.loader = {
 }
 
 module.exports.plugin = FucssPlugin;
+
+module.exports.fucss = (obj) => 
+  Object.entries(obj).reduce((str, [ key, show ]) => show ? str + ' ' + key : str , '');
