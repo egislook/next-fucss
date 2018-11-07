@@ -28,7 +28,7 @@ module.exports = class FucssPlugin {
         if(~processingFile.indexOf('.css') || !fucss.store.classes.length) 
           return;
         
-        const style = fucss.generateStyling({ classes: fucss.store.classes, returnStyle: true, glob: true });
+        const style = fucss.generateStyling({ classes: fucss.store.classes, returnStyle: true, glob: true, anim: true });
         
         // const str = `
         //   prevLength: ${this.prevClasses.length} 
