@@ -3,6 +3,7 @@
 // https://github.com/zeit/next-plugins/blob/master/packages/next-mdx
 const FucssPlugin = require('./fucss.plugin.js');
 const { cls }  = require('./utils.js');
+const PwaFucssPlugin = require('./pwa.fucss.plugin.js');
 
 // module.exports = (mainConfig) => 
 //   withCSS({
@@ -23,6 +24,7 @@ module.exports.withFucss = config => {
 }
 
 module.exports.plugin = FucssPlugin;
+module.exports.PwaFucssPlugin = PwaFucssPlugin;
   
 const loader = module.exports.loader = {
   test: /\.(js|jsx)$/,
