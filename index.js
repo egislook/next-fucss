@@ -3,7 +3,7 @@
 // https://github.com/zeit/next-plugins/blob/master/packages/next-mdx
 const FucssPlugin = require('./fucss.plugin.js');
 const { cls }  = require('./utils.js');
-const PwaFucssPlugin = require('./pwa.fucss.plugin.js');
+const PwaFucssPlugin = require('./pwa/pwa.fucss.plugin.js');
 
 // module.exports = (mainConfig) => 
 //   withCSS({
