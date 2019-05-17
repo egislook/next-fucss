@@ -6,10 +6,16 @@ module.exports = function(content, map, meta) {
   const loader = this.loaders.find(({ query }) => query.includes('styleFile'));
   fucss.store.styleFile = process.cwd() + (loader && loader.query.split('=').pop());
   
-  if(!~content.indexOf('className=')) 
+  if(!~content.indexOf('className')) 
     return content;
   
   const classes = fucss.generateStyling({ riot: content, returnClasses: true, escape: true }) || [];
+  
+  if(!classes.length) 
+    return content;
+    
+  console.log('[FUCSS] Reloading');
+  
   fucss.store.classes = (fucss.store.classes || []).concat(classes);
   fucss.store.classes = fucss.store.classes.filter(( v, i ) => fucss.store.classes.indexOf(v) === i);
   

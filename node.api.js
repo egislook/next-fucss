@@ -18,6 +18,6 @@ exports.default = (options = {}) => {
       config.module.rules.push(loader);
       config.plugins.push(new Plugin({ styleFile }));
       return config
-    },
+    }
   })
 }
