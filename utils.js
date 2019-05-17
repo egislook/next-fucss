@@ -6,8 +6,9 @@ module.exports.fucss = module.exports.cls = module.exports.classer =
   
 module.exports.cssReload = function(link){
   if(typeof window === 'object'){
+    console.log('reload Style');
     link = link || '/main.css';
-    const elem = document.querySelector('[rel="stylesheet"]');
+    const elem = document.querySelector('[href*="' + link + '"]');
     elem.href = link + '?' + new Date().getTime();
   }
 }
