@@ -8,14 +8,14 @@ module.exports.fucss = module.exports.cls = module.exports.classer =
   
 module.exports.fustyle = 
   function(obj){
-    // console.log({ obj });
-    const classes = Object.entries(obj).reduce((arr, [ key, show ]) => (
-      show && key.length ? arr.concat(key.split(' ')) : arr
-    ), []);
     
-    let style = fucss.generateStyling({ classes, returnStyle: true, onlyRules: true, escape: true, glob: false });
+    const classes = typeof obj === 'string'
+      ? obj.split(' ')
+      : Object.entries(obj).reduce((arr, [ key, show ]) => (
+          show && key.length ? arr.concat(key.split(' ')) : arr
+        ), []);
     
-    return style;
+    return fucss.generateStyling({ classes, returnStyle: true, onlyRules: true, escape: true, glob: false });
   }
   
 module.exports.cssReload = function(link){
