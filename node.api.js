@@ -2,12 +2,11 @@ const Plugin = require('./react-static/plugin');
 const Loader = require('./react-static/loader');
 
 exports.default = (options = {}) => {
-  console.log('next-fucss', options);
+  
+  let { styleFile = '/public/style.css' } = options;
   
   return ({
     webpack: config => {
-      
-      const styleFile = '/public/style.css';
       
       const loader = {
         test: /\.(js|jsx)$/,
