@@ -4,9 +4,13 @@ const Loader = require('./react-static/loader');
 exports.default = (options = {}) => {
   
   let { styleFile = '/public/style.css' } = options;
+  const isDevelopment = process.env.NODE_ENV === 'development';
   
   return ({
     webpack: config => {
+      
+      if(!isDevelopment) 
+        return config;
       
       const loader = {
         test: /\.(js|jsx)$/,
