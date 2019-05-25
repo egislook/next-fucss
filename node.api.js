@@ -4,7 +4,10 @@ const Loader = require('./react-static/loader');
 exports.default = (options = {}) => {
   
   let { styleFile = '/public/style.css' } = options;
+  const { include = [] } = options;
   const isDevelopment = process.env.NODE_ENV === 'development';
+  
+  isDevelopment && console.log('[FUCSS] development');
   
   return ({
     webpack: config => {
@@ -15,7 +18,7 @@ exports.default = (options = {}) => {
       const loader = {
         test: /\.(js|jsx)$/,
         exclude: [/node_modules/],
-        include: [/components/, /elements/, /pages/, '/screens/'],
+        include: [/src/].concat(include),
         use: require.resolve('./react-static/loader.js') + '?' + 'styleFile=' + styleFile
       }
       
