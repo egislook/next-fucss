@@ -4,15 +4,15 @@ const Loader = require('./react-static/loader');
 exports.default = (options = {}) => {
   
   let { styleFile = '/public/style.css' } = options;
-  const { include = [] } = options;
-  const isDevelopment = process.env.NODE_ENV === 'development';
+  let { include = [], allowBuild } = options;
+  allowBuild = allowBuild || process.env.NODE_ENV === 'development';
   
-  isDevelopment && console.log('[FUCSS] development');
+  allowBuild && console.log('[FUCSS] allow Build');
   
   return ({
     webpack: config => {
       
-      if(!isDevelopment) 
+      if(!allowBuild) 
         return config;
       
       const loader = {
