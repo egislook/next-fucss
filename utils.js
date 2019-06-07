@@ -1,12 +1,12 @@
 const fucss = require('fucss');
 
-module.exports.fucss = module.exports.cls = module.exports.classer = 
+module.exports.fucss = module.exports.cls = module.exports.classer = module.exports.fuCss =
   function(obj){
     // console.log({ obj });
     return Object.entries(obj).reduce((str, [ key, show ]) => !!(show) ? str + ' ' + key : str , '');
   }
   
-module.exports.fustyle = 
+module.exports.fustyle = module.exports.fuStyle =
   function(obj){
     
     const classes = typeof obj === 'string'
