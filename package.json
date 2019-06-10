@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fucss": "^0.8.14"
+    "fucss": "^0.8.15"
   }
 }
