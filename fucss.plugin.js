@@ -12,10 +12,6 @@ module.exports = class FucssPlugin {
   
   apply(compiler) {
     
-    console.log('tadam');
-    
-    return;
-    
     compiler.hooks.beforeCompile.tapPromise('FucssPlugin', async (compilation) => {
       !fs.existsSync(styleFile) && fs.writeFileSync(styleFile, '', { flag: 'w+' } );
       return;

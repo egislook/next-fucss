@@ -4,6 +4,7 @@
 const FucssPlugin = require('./fucss.plugin.js');
 const { cls }  = require('./utils.js');
 const PwaFucssPlugin = require('./pwa/pwa.fucss.plugin.js');
+const path = require('path');
 
 // module.exports = (mainConfig) => 
 //   withCSS({
@@ -29,7 +30,7 @@ module.exports.PwaFucssPlugin = PwaFucssPlugin;
 const loader = module.exports.loader = {
   test: /\.(js|jsx)$/,
   exclude: [/node_modules/],
-  include: [/components/, /elements/, /pages/],
+  include: [/[src|pages|comps|elems|components|elements|screens]/gm],
   use: require.resolve('./fucss.loader.js') //'fucss-loader'
 }
 

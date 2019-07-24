@@ -22,9 +22,11 @@ exports.default = (options = {}) => {
         use: require.resolve('./react-static/loader.js') + '?' + 'styleFile=' + styleFile
       }
       
+      // config.module.noParse = /\/iconv-loader$/;
       config.module.rules.push(loader);
       config.plugins.push(new Plugin({ styleFile }));
-      return config
+      console.log(config);
+      return config;
     }
   })
 }

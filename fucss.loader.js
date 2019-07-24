@@ -2,8 +2,10 @@ const fucss = require('fucss');
 
 module.exports = function(content, map, meta) {
   
+  // console.log(arguments);
+  
   try{
-    if(!~content.indexOf('className=')) 
+    if(!content.includes('className') && !content.includes('fucss')) 
       return content;
       
     const classes = fucss.generateStyling({ riot: content, returnClasses: true, escape: true }) || [];
